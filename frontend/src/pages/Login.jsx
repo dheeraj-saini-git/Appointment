@@ -32,6 +32,7 @@ export default function Login(){
                 if(data.success){
                    localStorage.setItem('token', data.token)
                    console.log('success-loggedIn')
+                    toast.success('Logged in successfully!')
                     setToken(data.token)
                 }else{
                     toast.error(data.message)
