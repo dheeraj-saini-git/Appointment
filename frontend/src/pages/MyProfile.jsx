@@ -151,6 +151,7 @@ export default function MyProfile() {
                   setUserData((prev) => ({ ...prev, gender: e.target.value }))
                 }
               >
+                <option value="Not Selected">Select</option>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
                 <option value="Other">Other</option>
