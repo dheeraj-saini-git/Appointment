@@ -4,19 +4,19 @@ A full-stack web application that allows users to book doctor appointments, mana
 
 Built using **MERN stack** with Razorpay payment integration and responsive design.
 
-📂 Project Structure
+##📂 Project Structure
 Appointment-Booking-App/
  admin/ # Admin dashboard (React + Vite)
  frontend/ # User-facing site (React + Vite)
  backend/ # REST API (Node.js + Express + MongoDB)
 
-🧪 Test Payment (Razorpay)
+##🧪 Test Payment (Razorpay)
 You can try out the Razorpay payment integration using this dummy test card:
 Card Number: 5267 3181 8797 5449
 Expiry: Any future date (e.g. 12/28)
 CVV: 123
 
- 💡 Tech Stack
+ ##💡 Tech Stack
 
 | Layer       | Tech                        |
 |-------------|-----------------------------|
@@ -26,7 +26,7 @@ CVV: 123
 | Payment     | Razorpay                    |
 | Hosting     | Render                      |
 
-💀 Admin Login Id Password
+##💀 Admin Login Id Password
 email- admin@apollo.com
 password- qwerty123
 
