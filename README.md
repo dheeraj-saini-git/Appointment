@@ -2,7 +2,7 @@
 
 A full-stack web application that allows users to book doctor appointments, manage their profiles, and make online payments. Admins can manage doctors, patients, and appointments through a dedicated admin dashboard.
 
-> Built using **MERN stack** with Razorpay payment integration and responsive design.
+Built using **MERN stack** with Razorpay payment integration and responsive design.
 
 📂 Project Structure
 Appointment-Booking-App/
@@ -25,3 +25,8 @@ CVV: 123
 | Auth        | JWT                         |
 | Payment     | Razorpay                    |
 | Hosting     | Render                      |
+
+💀 Admin Login Id Password
+email- admin@apollo.com
+password- qwerty123
+
