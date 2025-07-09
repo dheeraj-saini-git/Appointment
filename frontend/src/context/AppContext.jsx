@@ -59,7 +59,7 @@ export default function AppContextProvider(props) {
     } else {
       setUserData(false);
     }
-  },[]);
+  },[token]);
 
   const value = {
     doctors,
