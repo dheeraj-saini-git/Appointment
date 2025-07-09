@@ -13,7 +13,7 @@ export default function AppContextProvider(props) {
   const [token, setToken] = useState(
     localStorage.getItem("token")
       ? localStorage.getItem("token")
-      : import.meta.env.VITE_TOKEN
+      : ""
   );
   const [userData, setUserData] = useState(false);
 
