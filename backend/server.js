@@ -15,7 +15,10 @@ connectCloudinary()
 //middlewares
 
 app.use(express.json())
-app.use(cors())
+app.use(cors({
+  origin: "https://appointment-frontend-eo4d.onrender.com", 
+  credentials: true
+}));
 connectDB()
 
 //api endpoints 
