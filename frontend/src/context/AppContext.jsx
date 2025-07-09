@@ -7,7 +7,7 @@ export const AppContext = createContext();
 
 export default function AppContextProvider(props) {
   const currencySymbol = "$";
-  const backendUrl = "https://appointment-vvmi.onrender.com/";
+  const backendUrl = "https://appointment-4op9.onrender.com/";
 
   const [doctors, setDoctors] = useState([]);
   const [token, setToken] = useState(
