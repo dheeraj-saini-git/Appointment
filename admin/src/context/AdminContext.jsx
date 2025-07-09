@@ -9,7 +9,7 @@ export default function AdminContextProvider(props) {
   localStorage.getItem("aToken") ? localStorage.getItem("aToken") : localStorage.getItem("dToken")
 );
 
-  const backendUrl = "https://appointment-vvmi.onrender.com/";
+  const backendUrl = "https://appointment-4op9.onrender.com/";
   const [doctors, setDoctors] = useState([]);
   const [appointments, setAppointments] = useState([]);
   const [dashData, setDashData] = useState(false)
