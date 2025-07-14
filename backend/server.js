@@ -16,7 +16,8 @@ connectCloudinary()
 
 app.use(express.json())
 app.use(cors({
-  origin: "https://appointment-frontend-eo4d.onrender.com", 
+  origin: 'https://appointment-frontend-eo4d.onrender.com',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true
 }));
 connectDB()
