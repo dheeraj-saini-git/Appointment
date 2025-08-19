@@ -5,7 +5,7 @@ import axios from "axios";
 export const DoctorContext = createContext();
 
 export default function DoctorContextProvider(props) {
-  const backendUrl = "https://appointment-4op9.onrender.com/";
+  const backendUrl = "appointment-server-puce.vercel.app/"
   const [dToken, setDToken] = useState(localStorage.getItem("dToken") || "");
   const [appointments, setAppointments] = useState([]);
   const [dashData, setDashData] = useState(false)
