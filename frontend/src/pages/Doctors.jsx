@@ -4,7 +4,7 @@ import { AppContext } from "../context/AppContext";
 
 export default function Doctors() {
   const { speciality } = useParams();
-  const { doctors } = useContext(AppContext);
+  const { doctors, loading } = useContext(AppContext);
   const [filterDoc, setFilterDoc] = useState([]);
   const [showFilter, setShowFilter] = useState(false);
   const navigate = useNavigate();
@@ -135,33 +135,41 @@ export default function Doctors() {
           </p>
         </div>
 
-        <div className="w-full grid grid-cols-auto gap-4 gap-y-6">
-          {filterDoc.map((item, index) => (
-            <div
-              key={index}
-              onClick={() => navigate(`/appointment/${item._id}`)}
-              className="border border-blue-200 rounded-x1 overflow-hidden cursor-pointer hover:translate-y-[-10px] transition-all duration-500"
-            >
-              <img className="bg-blue-50" src={item.image} alt="" />
-              <div className="p-4">
-                <div
-                  className={`flex items-center gap-2 text-sm text-center ${
-                    item.available ? "text-green-500" : "text-gray-500"
-                  }`}
-                >
-                  <p
-                    className={`w-2 h-2 ${
-                      item.available ? "bg-green-500" : "bg-gray-500"
-                    } rounded-full`}
-                  ></p>
-                  <p> {item.available ? "Available" : "Not Available"}</p>
+        {loading ? (
+          <div className="flex justify-center items-center h-3/4">
+            <div className="animate-spin rounded-full h-11 w-11 border-3 border-purple-500 border-t-transparent"></div>
+          </div>
+        ) : (
+          <div className="w-full grid grid-cols-auto gap-4 gap-y-6">
+            {filterDoc.map((item, index) => (
+              <div
+                key={index}
+                onClick={() => navigate(`/appointment/${item._id}`)}
+                className="border border-blue-200 rounded-x1 overflow-hidden cursor-pointer hover:translate-y-[-10px] transition-all duration-500"
+              >
+                <img className="bg-blue-50" src={item.image} alt="" />
+                <div className="p-4">
+                  <div
+                    className={`flex items-center gap-2 text-sm text-center ${
+                      item.available ? "text-green-500" : "text-gray-500"
+                    }`}
+                  >
+                    <p
+                      className={`w-2 h-2 ${
+                        item.available ? "bg-green-500" : "bg-gray-500"
+                      } rounded-full`}
+                    ></p>
+                    <p> {item.available ? "Available" : "Not Available"}</p>
+                  </div>
+                  <p className="text-gray-900 text-lg font-medium">
+                    {item.name}
+                  </p>
+                  <p className="text-gray-600 text-sm">{item.speciality}</p>
                 </div>
-                <p className="text-gray-900 text-lg font-medium">{item.name}</p>
-                <p className="text-gray-600 text-sm">{item.speciality}</p>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
