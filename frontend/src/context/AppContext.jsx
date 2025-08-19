@@ -7,7 +7,8 @@ export const AppContext = createContext();
 
 export default function AppContextProvider(props) {
   const currencySymbol = "$";
-  const backendUrl = "appointment-server-puce.vercel.app/";
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
+  const [loading, setLoading] = useState(false)
 
   const [doctors, setDoctors] = useState([]);
   const [token, setToken] = useState(
@@ -19,6 +20,7 @@ export default function AppContextProvider(props) {
 
   const getDoctorsData = async () => {
     try {
+      setLoading(true)
       const { data } = await axios.get(backendUrl + "api/doctor/list");
       if (data.success) {
         setDoctors(data.doctors);
@@ -29,6 +31,7 @@ export default function AppContextProvider(props) {
     } catch (error) {
       toast.error(error.message);
     }
+    setLoading(false)
   };
   const loadUserProfileData = async (req, res) => {
     try {
@@ -51,7 +54,7 @@ export default function AppContextProvider(props) {
 
   useEffect(() => {
     getDoctorsData();
-  }, []);
+  }, [token]);
 
   useEffect(() => {
     if (token) {
@@ -63,6 +66,7 @@ export default function AppContextProvider(props) {
 
   const value = {
     doctors,
+    loading,
     getDoctorsData,
     currencySymbol,
     backendUrl,
