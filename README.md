@@ -26,10 +26,10 @@ CVV: 123
 | Payment     | Razorpay                    |
 | Hosting     | Render                      |
 
-##💀 Admin Login Id Password
+# Admin Login Id Password
 email- admin@apollo.com
 password- qwerty123
-# dummy user id password 
+# Dummy user Login Id Password 
 ds@gmail.com
 12345678
 
