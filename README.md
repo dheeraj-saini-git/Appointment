@@ -29,4 +29,7 @@ CVV: 123
 ##💀 Admin Login Id Password
 email- admin@apollo.com
 password- qwerty123
+# dummy user id password 
+ds@gmail.com
+12345678
 
