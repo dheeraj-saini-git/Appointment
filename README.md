@@ -24,7 +24,7 @@ CVV: 123
 | Backend     | Node.js, Express, MongoDB   |
 | Auth        | JWT                         |
 | Payment     | Razorpay                    |
-| Hosting     | Render                      |
+| Hosting     | Vercel                      |
 
 # Admin Login Id Password
 email- admin@apollo.com
