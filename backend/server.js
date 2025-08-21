@@ -16,18 +16,7 @@ connectCloudinary()
 //middlewares
 
 app.use(express.json())
-app.use(
-  cors({
-    origin: "*",
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
-  })
-);
-app.options("*", cors())
-
-
-//api endpoints 
-// localhost:4000/api/admin/add-doctor
+app.use(cors())
 
 app.use('/api/admin', adminRouter)
 app.use('/api/doctor', doctorRouter)
