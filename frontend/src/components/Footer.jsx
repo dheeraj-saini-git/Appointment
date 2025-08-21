@@ -36,7 +36,7 @@ export default function Footer(){
             {/*Copyright text*/ }
             <hr />
             <p className='py-5 text-sm text-center'>
-                Copyright 2024@ ApoloHospital - All Right Reserved.
+                Copyright 2025@ ApolloHospital - All Right Reserved.
             </p>
         </div>
         </div>
