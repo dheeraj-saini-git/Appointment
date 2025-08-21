@@ -14,9 +14,6 @@ connectDB()
 connectCloudinary()
 
 //middlewares
-
-import cors from "cors";
-
 app.use(cors());
 
 app.use('/api/admin', adminRouter)
