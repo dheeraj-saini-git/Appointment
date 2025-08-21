@@ -10,7 +10,6 @@ import jwt from 'jsonwebtoken'
 
 const addDoctor = async (req,res) => {
     try{
-        console.log(req.body)
         const {name, email, password, speciality, degree, experience, about, fees, address} = req.body
         const imageFile = req.file 
     
@@ -80,7 +79,6 @@ const loginAdmin = async (req,res)=>{
         res.json({success : true, doctors})
 
     }catch(error){
-        console.log(error)
         res.json({success:false, message: error.message})
     }
  }
@@ -92,7 +90,6 @@ const loginAdmin = async (req,res)=>{
         const appointments = await appointmentModel.find({})
         res.json({success : true, appointments}) 
     }catch(error){
-        console.log(error)
         res.json({success:false, message: error.message})
     }
  }
@@ -117,7 +114,6 @@ const loginAdmin = async (req,res)=>{
     res.json({ success: true, message: 'Appointment has been cancelled'})
 
     } catch (error) {
-        console.log(error.message)
         res.json({ success : false, message: error.message})
     }
     
@@ -139,7 +135,6 @@ const adminDashboard = async (req, res)=>{
      res.json({ success: true, dashData })
 
     } catch (error) {
-        console.log(error.message)
         res.json({ success : false, message: error.message})
     }
 }
