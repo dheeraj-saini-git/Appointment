@@ -9,7 +9,7 @@ export default function AdminContextProvider(props) {
   localStorage.getItem("aToken") ? localStorage.getItem("aToken") : localStorage.getItem("dToken")
 );
 
-  const backendUrl = "appointment-server-puce.vercel.app/";
+  const backendUrl = "https://appointment-server-sigma.vercel.app/";
   const [doctors, setDoctors] = useState([]);
   const [appointments, setAppointments] = useState([]);
   const [dashData, setDashData] = useState(false)
