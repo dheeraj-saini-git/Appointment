@@ -16,7 +16,7 @@ connectCloudinary()
 
 app.use(express.json())
 app.use(cors({
-  origin: 'https://appointment-frontend-fawn.vercel.app',
+  origin: ['https://appointment-frontend-fawn.vercel.app', 'https://appointment-admin-mu.vercel.app']
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true
 }));
