@@ -17,14 +17,7 @@ connectCloudinary()
 
 import cors from "cors";
 
-app.use(cors({
-  origin: [
-    "https://appointment-frontend-fawn.vercel.app",
-    "https://appointment-admin-mu.vercel.app"
-  ],
-  methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
-  credentials: true
-}));
+app.use(cors());
 
 app.use('/api/admin', adminRouter)
 app.use('/api/doctor', doctorRouter)
