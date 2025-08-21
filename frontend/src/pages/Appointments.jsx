@@ -8,7 +8,8 @@ import axios from "axios";
 
 export default function Appointments() {
   const { docId } = useParams();
-  const { doctors, currencySymbol, backendUrl, token, getDoctorsData } = useContext(AppContext);
+  const { doctors, currencySymbol, backendUrl, token, getDoctorsData } =
+    useContext(AppContext);
   const daysOfWeek = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
   const navigate = useNavigate();
   const [docInfo, setDocInfo] = useState({});
@@ -16,18 +17,15 @@ export default function Appointments() {
   const [slotIndex, setSlotIndex] = useState(0);
   const [slotTime, setSlotTime] = useState("");
 
- function fetchDetails() {
+  function fetchDetails() {
+    const doctorInfo = doctors.find((doc) => doc._id === docId);
 
-  const doctorInfo = doctors.find((doc) => doc._id === docId);
- 
-  if (doctorInfo) {
-    setDocInfo(doctorInfo);
+    if (doctorInfo) {
+      setDocInfo(doctorInfo);
+    }
   }
-}
-
 
   async function getAvailableSlots() {
-   
     setDocSlots([]);
 
     // getting current date
@@ -59,19 +57,20 @@ export default function Appointments() {
           minute: "2-digit",
         });
 
-        let day = currentDate.getDate()
-        let month = currentDate.getMonth() + 1      
-        let year = currentDate.getFullYear()
-        const slotDate = day + "_" + month + "_" + year
-        const slotTime = formattedTime
-        const isSlotAvailable = !(docInfo?.slot_Booked?.[slotDate]?.includes(slotTime));
+        let day = currentDate.getDate();
+        let month = currentDate.getMonth() + 1;
+        let year = currentDate.getFullYear();
+        const slotDate = day + "_" + month + "_" + year;
+        const slotTime = formattedTime;
+        const isSlotAvailable =
+          !docInfo?.slot_Booked?.[slotDate]?.includes(slotTime);
 
-        if(isSlotAvailable){
+        if (isSlotAvailable) {
           // add slot to array
           timeSlots.push({
-            dateTime : new Date(currentDate),
-            time : formattedTime
-          })
+            dateTime: new Date(currentDate),
+            time: formattedTime,
+          });
         }
 
         // Increment current time by 30 minutes
@@ -94,7 +93,7 @@ export default function Appointments() {
       let year = date.getFullYear();
 
       const slotDate = day + "_" + month + "_" + year;
-    
+
       const { data } = await axios.post(
         backendUrl + "api/user/book-appointment",
         { docId, slotDate, slotTime },
@@ -114,10 +113,10 @@ export default function Appointments() {
     }
   };
 
-useEffect(() => {
-   fetchDetails();
-   console.log(docInfo, 'fetchDetail')
-}, [doctors, docId]);
+  useEffect(() => {
+    fetchDetails();
+    console.log(docInfo, "fetchDetail");
+  }, [doctors, docId]);
 
   useEffect(() => {
     getAvailableSlots();
@@ -132,7 +131,7 @@ useEffect(() => {
       <div>
         {/*-------Doctor Details--------*/}
 
-        <div className="flex flex-row sm:flex-row gap-4">
+        <div className="flex flex-col sm:flex-row gap-4">
           <div>
             <img
               className="bg-primary w-full sm:max-w-72 rounded-lg"
@@ -141,7 +140,7 @@ useEffect(() => {
             />
           </div>
 
-          <div className="flex-1 border border-gray-400 px-8 py-7 rounded-lg bg-white mx-2 sm:mx-0 mt-[-80px] sm:mt-0">
+          <div className="flex-1 border border-gray-400 px-8 py-7 rounded-lg bg-white mx-2 sm:mx-0 mt-0">
             {/*-------Doctor info: name, degree, experience-------*/}
             <p className="flex items-center gap-2 text-2xl font-medium text-gray-900">
               {docInfo.name}
@@ -179,7 +178,7 @@ useEffect(() => {
         <div className="sm:ml-72 sm:pl-4 mt-4 font-medium text-gray-700">
           <p>Booking slots</p>
           <div className="flex gap-3 items-center w-full overflow-x-scroll mt-4">
-            {docSlots.length &&
+            {docSlots.length > 0 &&
               docSlots.map((item, index) => (
                 <div
                   onClick={() => setSlotIndex(index)}
@@ -197,16 +196,19 @@ useEffect(() => {
               ))}
           </div>
           <div className="flex items-center gap-3 w-full overflow-x-scroll mt-4">
-            {docSlots.length &&
+            {docSlots.length > 0 &&
               docSlots[slotIndex].map((item, index) => (
                 <p
-                  onClick={() => setSlotTime(item.time)}
+                  onClick={() => {
+                    setSlotTime(item.time);
+                    setSelectedDate(item.dateTime);
+                  }}
                   className={`text-sm font-light flex-shrink-0 px-5 py-2 rounded-full cursor-pointer ${
                     item.time === slotTime
                       ? "bg-primary text-white"
                       : "text-gray-400 border-gray-300"
                   }`}
-                  key={index}
+                  key={item.time}
                 >
                   {item.time.toLowerCase()}
                 </p>
